@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEACE 2026 — Proactive Embodied Assistants in Context-aware Environments</title>
+<meta name="description" content="A Full-Stack Workshop on Proactive Embodied AI Assistants in Ubiquitous Computing. Co-located with UbiComp/ISWC 2026, Shanghai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0b1220;
+    --ink-soft: #1f2937;
+    --muted: #4b5563;
+    --line: #e5e7eb;
+    --line-soft: #f1f3f6;
+    --bg: #ffffff;
+    --bg-tint: #fafbfc;
+    --bg-deep: #0b1220;
+    --accent: #1d4ed8;
+    --accent-soft: #eef2ff;
+    --accent-2: #0d9488;
+    --amber: #b45309;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  h1 { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.15; margin-bottom: 0.4em; }
+  h3 { font-size: 1.2rem; line-height: 1.3; }
+  h4 { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0; }
+
+  a { color: var(--accent); text-decoration: none; transition: opacity 0.15s ease; }
+  a:hover { opacity: 0.7; }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+  .container-narrow { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .brand .year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-left: 6px;
+    vertical-align: 2px;
+  }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--accent); opacity: 1; }
+  .nav-cta {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--ink);
+    color: #fff !important;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+  .nav-cta:hover { opacity: 0.85; background: var(--accent); }
+  @media (max-width: 820px) {
+    .nav-links { display: none; }
+    .nav-cta { display: inline-block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    padding: 100px 0 80px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-svg {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+    letter-spacing: 0.02em;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+  .hero h1 {
+    margin-bottom: 0.4em;
+    max-width: 14ch;
+  }
+  .hero h1 .em {
+    font-style: italic;
+  }
+  .hero h1 .em-proactive { color: #1d4ed8; }
+  .hero h1 .em-embodied { color: #b45309; }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 56ch;
+    margin-bottom: 16px;
+  }
+  .hero-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin-bottom: 40px;
+    padding-left: 16px;
+    border-left: 2px solid var(--accent);
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 28px;
+    margin-bottom: 40px;
+  }
+  .hero-meta-item {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .hero-meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .hero-meta-val { font-weight: 500; color: var(--ink); font-size: 1rem; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.18s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--ink); color: #fff !important; }
+  .btn-primary:hover { background: var(--accent); opacity: 1; }
+  .btn-ghost { background: transparent; color: var(--ink) !important; border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); opacity: 1; }
+  .btn .arrow { transition: transform 0.2s ease; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ---------- SECTION COMMONS ---------- */
+  section { padding: 96px 0; }
+  .section-tint { background: var(--bg-tint); }
+  .section-dark { background: var(--bg-deep); color: #cbd5e1; }
+  .section-dark h2, .section-dark h3, .section-dark h4 { color: #ffffff; }
+  .section-dark .eyebrow { color: #93c5fd; }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .section-head { margin-bottom: 56px; max-width: 720px; }
+  .section-head p { color: var(--muted); font-size: 1.08rem; margin-top: 14px; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-body p { color: var(--ink-soft); font-size: 1.02rem; margin-bottom: 1.2em; }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body em { color: var(--accent); font-style: italic; font-weight: 500; }
+  .about-side {
+    background: var(--bg-tint);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 32px;
+  }
+  .about-side h4 { margin-bottom: 18px; font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 500; }
+  .outcome { display: flex; gap: 14px; margin-bottom: 20px; }
+  .outcome:last-child { margin-bottom: 0; }
+  .outcome-num {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .outcome-text { font-size: 0.95rem; color: var(--ink-soft); }
+  .outcome-text strong { color: var(--ink); display: block; margin-bottom: 2px; font-weight: 600; }
+  @media (max-width: 820px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ---------- TOPICS / AXES ---------- */
+  .axes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .axis {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 36px 32px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .axis::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--axis-color, var(--accent));
+  }
+  .axis:nth-child(1) { --axis-color: #1d4ed8; }
+  .axis:nth-child(2) { --axis-color: #0d9488; }
+  .axis:nth-child(3) { --axis-color: #b45309; }
+  .axis:hover { transform: translateY(-2px); box-shadow: 0 12px 32px -12px rgba(11, 18, 32, 0.12); }
+  .axis-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--axis-color);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .axis-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .axis-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    line-height: 1.55;
+  }
+  .thread {
+    padding: 18px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .thread-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .thread-name {
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .thread-keywords {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  @media (max-width: 980px) {
+    .axes { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- PROGRAM / SCHEDULE ---------- */
+  .schedule {
+    max-width: 760px; margin: 0 auto;
+  }
+  .schedule-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-top: 1px solid #1f2937;
+    align-items: baseline;
+  }
+  .schedule-item:first-child { border-top: none; }
+  .schedule-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem;
+    color: #93c5fd;
+    font-weight: 500;
+    padding-top: 4px;
+  }
+  .schedule-content h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.18rem;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .schedule-content p {
+    color: #94a3b8;
+    font-size: 0.94rem;
+  }
+  .schedule-keynote {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fbbf24;
+    margin-top: 6px;
+  }
+  @media (max-width: 640px) {
+    .schedule-item { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* ---------- SUBMISSION ---------- */
+  .submit-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .sub-categories { display: grid; gap: 20px; }
+  .sub-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .sub-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .sub-pages {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .sub-card p { color: var(--muted); font-size: 0.94rem; margin-top: 8px; }
+  .sub-meta {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 32px;
+  }
+  .sub-meta-item h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .sub-meta-item p { font-size: 0.95rem; color: var(--ink-soft); }
+
+  .dates-table {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .date-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 16px 24px;
+    border-top: 1px solid var(--line-soft);
+    align-items: center;
+    gap: 16px;
+  }
+  .date-row:first-child { border-top: none; }
+  .date-row.is-soon {
+    background: linear-gradient(90deg, var(--accent-soft) 0%, transparent 60%);
+  }
+  .date-label {
+    font-size: 0.94rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .date-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+  .date-row.is-soon .date-value { color: var(--accent); font-weight: 500; }
+  @media (max-width: 820px) {
+    .submit-grid { grid-template-columns: 1fr; gap: 32px; }
+    .sub-meta { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- ORGANIZERS ---------- */
+  .organizers {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  .organizer {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+  .organizer:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .org-avatar {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    background: var(--bg-tint);
+    border: 2px solid #fff;
+    box-shadow: 0 4px 14px -4px rgba(11, 18, 32, 0.18), 0 0 0 1px var(--line);
+    overflow: hidden;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+  .org-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .organizer:hover .org-avatar img { transform: scale(1.05); }
+  .org-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .org-affil {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  @media (max-width: 980px) {
+    .organizers { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .organizers { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--bg-deep);
+    color: #94a3b8;
+    padding: 64px 0 40px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand {
+    font-family: 'Fraunces', serif;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .footer-brand .year { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #93c5fd; margin-left: 6px; }
+  .footer p { font-size: 0.92rem; line-height: 1.6; }
+  .footer-col h5 {
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .footer-col a {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.92rem;
+    padding: 4px 0;
+  }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid #1f2937;
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+  @media (max-width: 820px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#top" class="brand">PEACE <span class="year">2026</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#topics">Topics</a>
+      <a href="#program">Program</a>
+      <a href="#submission">Submission</a>
+      <a href="#organizers">Organizers</a>
+    </div>
+    <a href="https://new.precisionconference.com/submissions" target="_blank" rel="noopener" class="nav-cta">Submit</a>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<header class="hero" id="top">
+  <!-- abstract geometric SVG: sensing field / radiating perception -->
+  <svg class="hero-svg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="g1" cx="80%" cy="30%" r="50%">
+        <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.10"/>
+        <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="g2" cx="20%" cy="80%" r="40%">
+        <stop offset="0%" stop-color="#0d9488" stop-opacity="0.08"/>
+        <stop offset="100%" stop-color="#0d9488" stop-opacity="0"/>
+      </radialGradient>
+      <pattern id="dotgrid" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+        <circle cx="1.2" cy="1.2" r="1.2" fill="#cbd5e1" opacity="0.45"/>
+      </pattern>
+    </defs>
+    <rect width="1400" height="800" fill="url(#dotgrid)"/>
+    <rect width="1400" height="800" fill="url(#g1)"/>
+    <rect width="1400" height="800" fill="url(#g2)"/>
+
+    <!-- radiating concentric rings (a "perception field") -->
+    <g transform="translate(1100, 240)" opacity="0.55">
+      <circle r="60"  fill="none" stroke="#1d4ed8" stroke-width="1"/>
+      <circle r="120" fill="none" stroke="#1d4ed8" stroke-width="1" stroke-dasharray="2 6"/>
+      <circle r="190" fill="none" stroke="#1d4ed8" stroke-width="0.8" stroke-dasharray="2 8"/>
+      <circle r="270" fill="none" stroke="#1d4ed8" stroke-width="0.6" stroke-dasharray="2 10"/>
+      <circle r="6" fill="#1d4ed8"/>
+    </g>
+
+    <!-- constellation / connected sensor nodes -->
+    <g stroke="#1f2937" stroke-width="0.6" opacity="0.35">
+      <line x1="240" y1="160" x2="380" y2="240"/>
+      <line x1="380" y1="240" x2="520" y2="180"/>
+      <line x1="380" y1="240" x2="440" y2="380"/>
+      <line x1="240" y1="160" x2="180" y2="320"/>
+      <line x1="180" y1="320" x2="440" y2="380"/>
+      <line x1="520" y1="180" x2="640" y2="290"/>
+      <line x1="640" y1="290" x2="440" y2="380"/>
+    </g>
+    <g fill="#1f2937">
+      <circle cx="240" cy="160" r="3.5"/>
+      <circle cx="380" cy="240" r="4"/>
+      <circle cx="520" cy="180" r="3"/>
+      <circle cx="180" cy="320" r="3"/>
+      <circle cx="440" cy="380" r="3.5"/>
+      <circle cx="640" cy="290" r="3"/>
+    </g>
+
+    <!-- bottom-left smaller cluster -->
+    <g stroke="#0d9488" stroke-width="0.6" opacity="0.35">
+      <line x1="120" y1="600" x2="240" y2="560"/>
+      <line x1="240" y1="560" x2="320" y2="660"/>
+      <line x1="120" y1="600" x2="320" y2="660"/>
+    </g>
+    <g fill="#0d9488">
+      <circle cx="120" cy="600" r="3"/>
+      <circle cx="240" cy="560" r="3"/>
+      <circle cx="320" cy="660" r="3"/>
+    </g>
+  </svg>
+
+  <div class="container hero-inner">
+    <h1><span class="em em-proactive">Proactive</span> <span class="em em-embodied">embodied</span> assistants in context-aware environments.</h1>
+
+    <p class="hero-sub">A full-stack workshop on bridging sensing, decision-making, alignment, and longitudinal evaluation for the next generation of ubiquitous AI assistants.</p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Date</span>
+        <span class="hero-meta-val">October 11 or 12, 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Venue</span>
+        <span class="hero-meta-val">Shanghai, China</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Format</span>
+        <span class="hero-meta-val">Full-day · in-person</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Submissions</span>
+        <span class="hero-meta-val">Late July 2026</span>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="https://new.precisionconference.com/submissions" target="_blank" rel="noopener" class="btn btn-primary">Submit a paper <span class="arrow">→</span></a>
+      <a href="#topics" class="btn btn-ghost">Explore the program</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========== ABOUT ========== -->
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">§01 · Motivation</span>
+      <h2>The proactive turn is within reach — and opens new research questions.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-body">
+        <p>Consumer products from Apple, Google, and Meta are converging on a single vision: an assistant that observes, anticipates, and acts before the user asks. By <em>embodied</em>, we mean assistants coupled to the user's body, activity, and physical environment — wearables, smart glasses, ambient systems, vehicle assistants — rather than chat interfaces.</p>
+
+        <p>Building such an assistant is a <em>full-stack problem</em>: sensing under uncertainty, when-to-act policies, alignment from long-horizon behavior, and longitudinal evaluation. A misjudged interruption can originate at any layer. PEACE 2026 brings six threads of research into one program organized around three axes, with bridging papers especially welcome.</p>
+      </div>
+
+      <aside class="about-side">
+        <h4>What we aim to produce</h4>
+        <div class="outcome">
+          <div class="outcome-num">1</div>
+          <div class="outcome-text"><strong>Shared vocabulary</strong>For proactive-assistant behavior usable across the stack.</div>
+        </div>
+        <div class="outcome">
+          <div class="outcome-num">2</div>
+          <div class="outcome-text"><strong>Failure-mode taxonomy</strong>Unique to embodied assistants, seeded during the closing breakout.</div>
+        </div>
+        <div class="outcome">
+          <div class="outcome-num">3</div>
+          <div class="outcome-text"><strong>Community roadmap</strong>An evaluation checklist and a living cross-community working network.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TOPICS / AXES ========== -->
+<section id="topics" class="section-tint">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">§02 · Scope</span>
+      <h2>Three axes. Six threads. Bridging papers welcome.</h2>
+      <p>PEACE is organized at the program level around three axes, with submissions tagged into six finer-grained threads. We particularly welcome work at the interface between two or more threads.</p>
+    </div>
+
+    <div class="axes">
+      <!-- AXIS A -->
+      <div class="axis">
+        <div class="axis-label">Axis A</div>
+        <h3 class="axis-title">Sensing substrate</h3>
+        <p class="axis-desc">What the assistant perceives, on what hardware, with what uncertainty.</p>
+
+        <div class="thread">
+          <div class="thread-num">Thread 1</div>
+          <div class="thread-name">Hardware and platforms</div>
+          <div class="thread-keywords">Form factors · sensor placement · power budgets · wearable & ambient platforms · edge / on-device compute · hardware–software codesign · heterogeneous integration.</div>
+        </div>
+        <div class="thread">
+          <div class="thread-num">Thread 2</div>
+          <div class="thread-name">Sensing and context perception</div>
+          <div class="thread-keywords">Multimodal pipelines · foundation models for perception · cross-user / cross-environment generalization · sim-to-real · on-device, privacy-aware perception · uncertainty-aware perception.</div>
+        </div>
+      </div>
+
+      <!-- AXIS B -->
+      <div class="axis">
+        <div class="axis-label">Axis B</div>
+        <h3 class="axis-title">Proactive decision &amp; alignment</h3>
+        <p class="axis-desc">When the assistant acts, how it represents user values, and how those constraints are made legible.</p>
+
+        <div class="thread">
+          <div class="thread-num">Thread 3</div>
+          <div class="thread-name">Proactive decision-making and agency</div>
+          <div class="thread-keywords">When-to-act policies · agent reasoning over long-horizon context · mixed-initiative & shared autonomy · agentic wearable pipelines · intervention modality selection · reversibility & contestability.</div>
+        </div>
+        <div class="thread">
+          <div class="thread-num">Thread 4</div>
+          <div class="thread-name">Human alignment and interaction</div>
+          <div class="thread-keywords">Value elicitation from behavioral traces · bidirectional alignment loops · multi-stakeholder alignment in shared spaces · attention management · ethics of always-on observation · legibility.</div>
+        </div>
+      </div>
+
+      <!-- AXIS C -->
+      <div class="axis">
+        <div class="axis-label">Axis C</div>
+        <h3 class="axis-title">Toolkits, evaluation &amp; deployment</h3>
+        <p class="axis-desc">How proactive systems are built, tested, and evaluated in the wild.</p>
+
+        <div class="thread">
+          <div class="thread-num">Thread 5</div>
+          <div class="thread-name">Development environments and toolkits</div>
+          <div class="thread-keywords">Simulation testbeds · synthetic users · open agentic frameworks · reproducible-research infrastructure · in-situ prototyping tools · sandboxes for rare or sensitive conditions.</div>
+        </div>
+        <div class="thread">
+          <div class="thread-num">Thread 6</div>
+          <div class="thread-name">Benchmarks, datasets, and field studies</div>
+          <div class="thread-keywords">In-the-wild & longitudinal methodology · shared datasets capturing intent and response · failure-mode taxonomies · evaluation beyond precision/recall · case studies · societal implications.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROGRAM ========== -->
+<section id="program" class="section-dark">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">§03 · Program</span>
+      <h2>A full-day program with two invited keynotes. <span style="color: #93c5fd; font-style: italic;">(Tentative)</span></h2>
+    </div>
+
+    <div class="schedule">
+      <div class="schedule-item">
+        <div class="schedule-time">09:00 – 09:15</div>
+        <div class="schedule-content">
+          <h3>Opening</h3>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">09:15 – 10:00</div>
+        <div class="schedule-content">
+          <h3>Keynote 1</h3>
+          <span class="schedule-keynote">★ Invited</span>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">10:00 – 12:00</div>
+        <div class="schedule-content">
+          <h3>Paper Session A</h3>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">12:00 – 13:30</div>
+        <div class="schedule-content">
+          <h3>Lunch &amp; networking</h3>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">13:30 – 14:15</div>
+        <div class="schedule-content">
+          <h3>Keynote 2</h3>
+          <span class="schedule-keynote">★ Invited</span>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">14:15 – 15:30</div>
+        <div class="schedule-content">
+          <h3>Paper Session B</h3>
+        </div>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">15:30 – 17:00</div>
+        <div class="schedule-content">
+          <h3>Closing &amp; poster session</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SUBMISSION ========== -->
+<section id="submission">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">§04 · Submission</span>
+      <h2>Two submission categories. Single-blind review.</h2>
+      <p>Acceptance criteria weight originality, relevance, and discussion potential — submissions that seed productive workshop conversation are preferred over polished work suitable for the main conference.</p>
+    </div>
+
+    <div class="submit-grid">
+      <div>
+        <div class="sub-categories">
+          <div class="sub-card">
+            <h3>Research papers <span class="sub-pages">4–6 pages</span></h3>
+            <p>Completed or substantial in-progress work — systems, sensing pipelines, toolkits, datasets, and empirical studies. Excluding references.</p>
+          </div>
+          <div class="sub-card">
+            <h3>Position &amp; vision papers <span class="sub-pages">2–4 pages</span></h3>
+            <p>Framings, critiques, agendas. Experience reports, negative results, and dataset / toolkit descriptions especially encouraged.</p>
+          </div>
+        </div>
+
+        <div class="sub-meta">
+          <div class="sub-meta-item">
+            <h4>Review process</h4>
+            <p>Single-blind peer review.</p>
+          </div>
+          <div class="sub-meta-item">
+            <h4>Template</h4>
+            <p>IMWUT.</p>
+          </div>
+          <div class="sub-meta-item">
+            <h4>Publication</h4>
+            <p>UbiComp/ISWC 2026 Adjunct Proceedings + ACM Digital Library.</p>
+          </div>
+          <div class="sub-meta-item">
+            <h4>Attendance</h4>
+            <p>At least one author per accepted paper must register and present in person.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; margin-bottom: 14px;">Important dates <span style="color: var(--accent); text-transform: none; letter-spacing: 0;">(Tentative)</span></h4>
+        <div class="dates-table">
+          <div class="date-row">
+            <div class="date-label">CFP release</div>
+            <div class="date-value">May 2026</div>
+          </div>
+          <div class="date-row is-soon">
+            <div class="date-label">Submission deadline</div>
+            <div class="date-value">Late July 2026</div>
+          </div>
+          <div class="date-row">
+            <div class="date-label">Notification</div>
+            <div class="date-value">Mid / Late August 2026</div>
+          </div>
+          <div class="date-row">
+            <div class="date-label">Camera-ready</div>
+            <div class="date-value">Mid-September 2026</div>
+          </div>
+          <div class="date-row">
+            <div class="date-label">Workshop</div>
+            <div class="date-value">Oct 11 / 12, 2026</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ORGANIZERS ========== -->
+<section id="organizers" class="section-tint">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">§05 · Team</span>
+      <h2>Organizers.</h2>
+    </div>
+
+    <div class="organizers">
+      <a class="organizer" href="https://www.yyang.site/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+        <div class="org-avatar"><img src="https://www.yyang.site/assets/images/bio-photo.jpg" alt="Yu Yang" loading="lazy"></div>
+        <div class="org-name">Yu Yang</div>
+        <div class="org-affil">Lehigh University</div>
+      </a>
+
+      <a class="organizer" href="https://yanzhenyu.com/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+        <div class="org-avatar"><img src="https://yanzhenyu.com/assets/img/profile.jpg" alt="Zhenyu Yan" loading="lazy"></div>
+        <div class="org-name">Zhenyu Yan</div>
+        <div class="org-affil">Chinese University of Hong Kong</div>
+      </a>
+
+      <a class="organizer" href="https://hua-shen.org/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+        <div class="org-avatar"><img src="https://hua-shen.org/assets/images/profile.png" alt="Hua Shen" loading="lazy"></div>
+        <div class="org-name">Hua Shen</div>
+        <div class="org-affil">NYU Shanghai / NYU</div>
+      </a>
+
+      <a class="organizer" href="https://vedantdasswain.com/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+        <div class="org-avatar"><img src="https://vedantdasswain.com/assets/images/avatar.jpg" alt="Vedant Das Swain" loading="lazy"></div>
+        <div class="org-name">Vedant Das Swain</div>
+        <div class="org-affil">New York University</div>
+      </a>
+
+      <a class="organizer" href="https://orsonxu.com/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+        <div class="org-avatar"><img src="https://orsonxu.com/img/profile.png" alt="Xuhai (Orson) Xu" loading="lazy"></div>
+        <div class="org-name">Xuhai (Orson) Xu</div>
+        <div class="org-affil">Columbia University</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">PEACE <span class="year">2026</span></div>
+        <p>Proactive Embodied Assistants in Context-aware Environments. A full-day workshop at UbiComp / ISWC 2026, Shanghai.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Workshop</h5>
+        <a href="#about">About</a>
+        <a href="#topics">Topics</a>
+        <a href="#program">Program</a>
+        <a href="#organizers">Organizers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <a href="https://www.ubicomp.org/" target="_blank" rel="noopener">UbiComp 2026 ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 PEACE Workshop Organizers · Co-located with ACM UbiComp / ISWC 2026.</div>
+      <div>Contact: <a href="mailto:peace2026@workshop.org" style="color:#93c5fd;">peace2026@workshop.org</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
