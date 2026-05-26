@@ -96,9 +96,35 @@
     font-weight: 500;
   }
   .nav-cta:hover { opacity: 0.85; background: var(--accent); }
+  .nav-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    background: var(--bg-tint);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: default;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .nav-status .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
   @media (max-width: 820px) {
     .nav-links { display: none; }
     .nav-cta { display: inline-block; }
+    .nav-status { display: inline-flex; }
+  }
+  @media (max-width: 420px) {
+    .nav-status { font-size: 0.76rem; padding: 6px 11px; }
   }
 
   /* ---------- HERO ---------- */
@@ -633,7 +659,7 @@
       <a href="#program">Program</a>
       <a href="#organizers">Organizers</a>
     </div>
-    <a href="https://new.precisionconference.com/submissions" target="_blank" rel="noopener" class="nav-cta">Submit</a>
+    <span class="nav-status" role="status"><span class="status-dot" aria-hidden="true"></span>Submissions opening soon</span>
   </div>
 </nav>
 
@@ -807,7 +833,7 @@
     <div class="section-head">
       <span class="eyebrow">§03 · Submission</span>
       <h2>Two submission categories. Single-blind review.</h2>
-      <p>Acceptance criteria weight originality, relevance, and discussion potential — submissions that seed productive workshop conversation are preferred over polished work suitable for the main conference. Awards will be given to papers with significant contributions.</p>
+      <p>Acceptance criteria weight originality, relevance, and discussion potential — submissions that seed productive workshop conversation are preferred over polished work suitable for the main conference. Two awards will be presented at the workshop: a <strong>Best Paper Award</strong> and a <strong>Best Bridging Paper Award</strong>. To be eligible for the Best Bridging Paper Award, authors must explicitly articulate the bridging contribution within the body of the paper.</p>
     </div>
 
     <div class="submit-grid">
@@ -874,7 +900,7 @@
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">§04 · Program</span>
-      <h2>A full-day program with invited keynotes. <span style="color: #93c5fd; font-style: italic;">(TBD)</span></h2>
+      <h2><span style="color: #93c5fd; font-style: italic;">TBD</span></h2>
     </div>
   </div>
 </section>
