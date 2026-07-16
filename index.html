@@ -23,7 +23,6 @@
     --accent-2: #0d9488;
     --amber: #b45309;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   body {
@@ -34,7 +33,6 @@
     -webkit-font-smoothing: antialiased;
     font-feature-settings: 'ss01', 'cv11';
   }
-
   h1, h2, h3, h4 {
     font-family: 'Fraunces', Georgia, serif;
     font-weight: 500;
@@ -45,13 +43,10 @@
   h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.15; margin-bottom: 0.4em; }
   h3 { font-size: 1.2rem; line-height: 1.3; }
   h4 { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0; }
-
   a { color: var(--accent); text-decoration: none; transition: opacity 0.15s ease; }
   a:hover { opacity: 0.7; }
-
   .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
   .container-narrow { max-width: 880px; margin: 0 auto; padding: 0 28px; }
-
   /* ---------- NAV ---------- */
   nav {
     position: sticky; top: 0; z-index: 100;
@@ -126,7 +121,6 @@
   @media (max-width: 420px) {
     .nav-status { font-size: 0.76rem; padding: 6px 11px; }
   }
-
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
@@ -183,7 +177,6 @@
     mix-blend-mode: multiply;
   }
   .hero-inner { position: relative; z-index: 1; }
-
   @media (max-width: 980px) {
     .hero {
       /* on phones: image is a true background filling the hero (cover sizing).
@@ -286,14 +279,12 @@
   .btn-ghost:hover { border-color: var(--ink); opacity: 1; }
   .btn .arrow { transition: transform 0.2s ease; }
   .btn:hover .arrow { transform: translateX(3px); }
-
   /* ---------- SECTION COMMONS ---------- */
   section { padding: 96px 0; }
   .section-tint { background: var(--bg-tint); }
   .section-dark { background: var(--bg-deep); color: #cbd5e1; }
   .section-dark h2, .section-dark h3, .section-dark h4 { color: #ffffff; }
   .section-dark .eyebrow { color: #93c5fd; }
-
   .eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
@@ -305,7 +296,6 @@
   }
   .section-head { margin-bottom: 56px; max-width: 720px; }
   .section-head p { color: var(--muted); font-size: 1.08rem; margin-top: 14px; }
-
   /* ---------- ABOUT ---------- */
   .about-grid {
     display: grid;
@@ -342,7 +332,6 @@
   @media (max-width: 820px) {
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
   }
-
   /* ---------- TOPICS / AXES ---------- */
   .axes {
     display: grid;
@@ -413,7 +402,6 @@
   @media (max-width: 980px) {
     .axes { grid-template-columns: 1fr; }
   }
-
   /* ---------- PROGRAM / SCHEDULE ---------- */
   .schedule {
     max-width: 760px; margin: 0 auto;
@@ -457,7 +445,6 @@
   @media (max-width: 640px) {
     .schedule-item { grid-template-columns: 1fr; gap: 4px; }
   }
-
   /* ---------- SUBMISSION ---------- */
   .submit-grid {
     display: grid;
@@ -507,7 +494,6 @@
     margin-bottom: 4px;
   }
   .sub-meta-item p { font-size: 0.95rem; color: var(--ink-soft); }
-
   .dates-table {
     background: #fff;
     border: 1px solid var(--line);
@@ -541,7 +527,6 @@
     .submit-grid { grid-template-columns: 1fr; gap: 32px; }
     .sub-meta { grid-template-columns: 1fr; }
   }
-
   /* ---------- ORGANIZERS ---------- */
   .organizers {
     display: grid;
@@ -593,7 +578,6 @@
   @media (max-width: 520px) {
     .organizers { grid-template-columns: 1fr; }
   }
-
   /* ---------- FOOTER ---------- */
   footer {
     background: var(--bg-deep);
@@ -647,7 +631,6 @@
 </style>
 </head>
 <body>
-
 <!-- ========== NAV ========== -->
 <nav>
   <div class="container nav-inner">
@@ -662,7 +645,6 @@
     <a href="https://new.precisionconference.com/" target="_blank" rel="noopener" class="nav-cta">Submit</a>
   </div>
 </nav>
-
 <!-- ========== HERO ========== -->
 <header class="hero" id="top">
   <!-- abstract geometric SVG: sensing field / radiating perception -->
@@ -683,7 +665,6 @@
     <rect width="1400" height="800" fill="url(#dotgrid)"/>
     <rect width="1400" height="800" fill="url(#g1)"/>
     <rect width="1400" height="800" fill="url(#g2)"/>
-
     <!-- constellation / connected sensor nodes -->
     <g stroke="#1f2937" stroke-width="0.6" opacity="0.35">
       <line x1="240" y1="160" x2="380" y2="240"/>
@@ -702,7 +683,6 @@
       <circle cx="440" cy="380" r="3.5"/>
       <circle cx="640" cy="290" r="3"/>
     </g>
-
     <!-- bottom-left smaller cluster -->
     <g stroke="#0d9488" stroke-width="0.6" opacity="0.35">
       <line x1="120" y1="600" x2="240" y2="560"/>
@@ -715,12 +695,9 @@
       <circle cx="320" cy="660" r="3"/>
     </g>
   </svg>
-
   <div class="container hero-inner">
     <h1><span class="em em-proactive">Proactive</span> <span class="em em-embodied">embodied</span> assistants in context-aware environments.</h1>
-
     <p class="hero-sub">A full-stack workshop for the next generation of ubiquitous AI assistants, bridging sensing, decision-making, alignment, and longitudinal evaluation.</p>
-
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="hero-meta-label">Date</span>
@@ -741,7 +718,6 @@
     </div>
   </div>
 </header>
-
 <!-- ========== ABOUT ========== -->
 <section id="about">
   <div class="container">
@@ -749,17 +725,13 @@
       <span class="eyebrow">§01 · Motivation</span>
       <h2>Building a proactive embodied assistant is a full-stack problem.</h2>
     </div>
-
     <div class="about-body">
       <p>A proactive embodied assistant has to do many things at once. Sense the user and environment under uncertainty. Model context well enough to act on. Decide when to interrupt. Choose actions aligned with long-horizon goals, not the immediate task. Evaluate in the wild, without ground truth. Each is a research community of its own.</p>
-
       <p>The layers don't compose. A calibration error in sensing shifts what perception learns, which shifts what decision reasons over, which changes what alignment even means. A misjudged interruption rarely has a single cause. Most work fixes one layer in isolation; the failures that matter cross them.</p>
-
       <p>PEACE 2026 is organized around this seam problem. We want work that bridges layers, work that re-examines one layer in light of the others, and longitudinal studies that surface what the lab cannot.</p>
     </div>
   </div>
 </section>
-
 <!-- ========== TOPICS / AXES ========== -->
 <section id="topics" class="section-tint">
   <div class="container">
@@ -768,14 +740,12 @@
       <h2>Three axes. Six threads. Bridging papers welcome.</h2>
       <p>PEACE is organized at the program level around three axes, with submissions tagged into six finer-grained threads. We particularly welcome work at the interface between two or more threads.</p>
     </div>
-
     <div class="axes">
       <!-- AXIS A -->
       <div class="axis">
         <div class="axis-label">Axis A</div>
         <h3 class="axis-title">Sensing substrate</h3>
         <p class="axis-desc">What the assistant perceives, on what hardware, with what uncertainty.</p>
-
         <div class="thread">
           <div class="thread-num">Thread 1</div>
           <div class="thread-name">Hardware and platforms</div>
@@ -787,13 +757,11 @@
           <div class="thread-keywords">Multimodal pipelines · foundation models for perception · cross-user / cross-environment generalization · sim-to-real · on-device, privacy-aware perception · uncertainty-aware perception.</div>
         </div>
       </div>
-
       <!-- AXIS B -->
       <div class="axis">
         <div class="axis-label">Axis B</div>
         <h3 class="axis-title">Proactive decision &amp; alignment</h3>
         <p class="axis-desc">When the assistant acts, how it represents user values, and how those constraints are made legible.</p>
-
         <div class="thread">
           <div class="thread-num">Thread 3</div>
           <div class="thread-name">Proactive decision-making and agency</div>
@@ -805,13 +773,11 @@
           <div class="thread-keywords">Value elicitation from behavioral traces · bidirectional alignment loops · multi-stakeholder alignment in shared spaces · attention management · ethics of always-on observation · legibility.</div>
         </div>
       </div>
-
       <!-- AXIS C -->
       <div class="axis">
         <div class="axis-label">Axis C</div>
         <h3 class="axis-title">Toolkits, evaluation &amp; deployment</h3>
         <p class="axis-desc">How proactive systems are built, tested, and evaluated in the wild.</p>
-
         <div class="thread">
           <div class="thread-num">Thread 5</div>
           <div class="thread-name">Development environments and toolkits</div>
@@ -826,7 +792,6 @@
     </div>
   </div>
 </section>
-
 <!-- ========== SUBMISSION ========== -->
 <section id="submission">
   <div class="container">
@@ -835,7 +800,6 @@
       <h2>Two submission categories. Single-blind review.</h2>
       <p>Acceptance criteria weight originality, relevance, and discussion potential — submissions that seed productive workshop conversation are preferred over polished work suitable for the main conference. Two awards will be presented at the workshop: a <strong>Best Paper Award</strong> and a <strong>Best Bridging Paper Award</strong>. To be eligible for the Best Bridging Paper Award, authors must explicitly articulate the bridging contribution within the body of the paper.</p>
     </div>
-
     <div class="submit-grid">
       <div>
         <div class="sub-categories">
@@ -848,7 +812,6 @@
             <p>Framings, critiques, agendas. Experience reports, negative results, and dataset / toolkit descriptions especially encouraged.</p>
           </div>
         </div>
-
         <div class="sub-meta">
           <div class="sub-meta-item">
             <h4>Review process</h4>
@@ -872,7 +835,6 @@
           </div>
         </div>
       </div>
-
       <div>
         <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; margin-bottom: 14px;">Important dates <span style="color: var(--accent); text-transform: none; letter-spacing: 0;">(Anywhere on Earth)</span></h4>
         <div class="dates-table">
@@ -886,19 +848,17 @@
           </div>
           <div class="date-row">
             <div class="date-label">Notification</div>
-            <div class="date-value">July 19, 2026</div>
+            <div class="date-value"><s style="color: #9ca3af; font-weight: 400;">July 19</s>&nbsp; July 21, 2026</div>
           </div>
           <div class="date-row">
             <div class="date-label">Camera-ready</div>
             <div class="date-value">July 31, 2026</div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </section>
-
 <!-- ========== PROGRAM ========== -->
 <section id="program" class="section-dark">
   <div class="container">
@@ -908,7 +868,6 @@
     </div>
   </div>
 </section>
-
 <!-- ========== ORGANIZERS ========== -->
 <section id="organizers" class="section-tint">
   <div class="container">
@@ -916,32 +875,27 @@
       <span class="eyebrow">§05 · Team</span>
       <h2>Organizers.</h2>
     </div>
-
     <div class="organizers">
       <a class="organizer" href="https://www.yyang.site/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
         <div class="org-avatar"><img src="https://www.yyang.site/assets/images/bio-photo.jpg" alt="Yu Yang" loading="lazy"></div>
         <div class="org-name">Yu Yang</div>
         <div class="org-affil">Lehigh University</div>
       </a>
-
       <a class="organizer" href="https://yanzhenyu.com/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
         <div class="org-avatar"><img src="https://yanzhenyu.com/assets/img/profile.jpg" alt="Zhenyu Yan" loading="lazy"></div>
         <div class="org-name">Zhenyu Yan</div>
         <div class="org-affil">Chinese University of Hong Kong</div>
       </a>
-
       <a class="organizer" href="https://hua-shen.org/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
         <div class="org-avatar"><img src="https://hua-shen.org/assets/images/profile.png" alt="Hua Shen" loading="lazy"></div>
         <div class="org-name">Hua Shen</div>
         <div class="org-affil">NYU Shanghai / NYU</div>
       </a>
-
       <a class="organizer" href="https://vedantdasswain.com/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
         <div class="org-avatar"><img src="https://vedantdasswain.com/assets/images/avatar.jpg" alt="Vedant Das Swain" loading="lazy"></div>
         <div class="org-name">Vedant Das Swain</div>
         <div class="org-affil">New York University</div>
       </a>
-
       <a class="organizer" href="https://orsonxu.com/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
         <div class="org-avatar"><img src="https://orsonxu.com/img/profile.png" alt="Xuhai (Orson) Xu" loading="lazy"></div>
         <div class="org-name">Xuhai (Orson) Xu</div>
@@ -950,7 +904,6 @@
     </div>
   </div>
 </section>
-
 <!-- ========== FOOTER ========== -->
 <footer>
   <div class="container">
@@ -981,6 +934,5 @@
     </div>
   </div>
 </footer>
-
 </body>
 </html>
