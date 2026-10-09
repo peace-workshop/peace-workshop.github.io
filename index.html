@@ -249,8 +249,10 @@
     border-left: 2px solid var(--accent);
   }
   .hero-meta {
-    display: flex; flex-wrap: wrap; gap: 28px;
+    display: flex; flex-wrap: wrap; gap: 20px 40px;
     margin-bottom: 40px;
+    /* keep the row inside the readable left zone of the hero; items wrap to a second line instead of running into the skyline */
+    max-width: 740px;
   }
   .hero-meta-item {
     display: flex; flex-direction: column; gap: 4px;
