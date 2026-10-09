@@ -476,6 +476,38 @@
     color: #e2e8f0;
     font-weight: 500;
   }
+  .keynote-abstract {
+    grid-column: 1 / -1;
+    position: relative; z-index: 1;
+    margin-top: 6px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(148, 163, 184, 0.22);
+  }
+  .keynote-abstract summary {
+    list-style: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #93c5fd;
+    user-select: none;
+    border-radius: 4px;
+  }
+  .keynote-abstract summary::-webkit-details-marker { display: none; }
+  .keynote-abstract summary:hover { color: #fff; }
+  .keynote-abstract summary:focus-visible { outline: 2px solid #93c5fd; outline-offset: 4px; }
+  .keynote-abstract-chevron { transition: transform 0.2s ease; }
+  .keynote-abstract[open] .keynote-abstract-chevron { transform: rotate(180deg); }
+  .keynote-abstract p {
+    margin-top: 14px;
+    max-width: 68ch;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .keynote-abstract-chevron { transition: none; }
+  }
   /* timeline */
   .schedule-head {
     display: flex; align-items: center; gap: 18px;
@@ -994,6 +1026,10 @@
           <div><span class="keynote-meta-label">When</span><span class="keynote-meta-val">14:05 – 14:55</span></div>
           <div><span class="keynote-meta-label">Format</span><span class="keynote-meta-val">40 min + Q&amp;A</span></div>
         </div>
+        <details class="keynote-abstract">
+          <summary><span class="keynote-abstract-toggle">Abstract</span><svg class="keynote-abstract-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <p>New wearable devices let assistants perceive the world from the user’s point of view. This creates both the need and the opportunity for assistance that does not wait to be asked. An ideal proactive assistant watches the user’s activity as it unfolds, decides when to speak and what to say, and guides users back when they deviate from the expected steps. The user should not have to keep asking “What’s the next step?” or “Did I do it correctly?”. Building such assistants raises hard questions: when to interrupt and when to stay silent, how to track a task in real time, how to extend proactivity beyond vision to sound and other sensors, and how to evaluate behavior that is inherently subjective. This talk reviews our recent work on these questions, from real-time guidance for physical tasks to proactive audio assistance, and shares public datasets and benchmarks for the community. It closes with open challenges and directions for the field.</p>
+        </details>
       </div>
 
       <!-- Schedule -->
